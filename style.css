@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://example.com/ваше_изображение.jpg') no-repeat center center fixed; /* Замените на вашу ссылку */
+    background-size: cover;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Заголовок и приветствие без фона */
+header {
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+h1, p {
+    margin: 0;
+}
+
+/* Основная часть без фона */
+main {
+    width: 100%;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Стили для кнопок */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #008080;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 100%; /* Кнопки занимают всю ширину на мобильных устройствах */
+}
+
+button:hover {
+    background-color: #006666;
+}
+
+/* Блок текста проекта ниже приветствия */
+.project-text {
+    position: absolute;
+    top: 200px; /* Появление ниже заголовка */
+    left: 100%;
+    width: 80vw;
+    background-color: rgba(255, 255, 255, 0.9); /* Прозрачный белый фон */
+    padding: 40px;
+    box-sizing: border-box;
+    transition: left 0.5s ease-in-out;
+    z-index: 1;
+    border-radius: 10px; /* Скругление углов блока проекта */
+}
+
+.project-text.visible {
+    left: 10vw; /* Текст будет слева с отступом */
+}
+
+.project-text h3 {
+    margin: 0 0 20px;
+}
+
+/* Кнопка закрытия */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #f00;
+    color: white;
+    border: none;
+    padding: 10px; /* Убираем лишние отступы */
+    cursor: pointer;
+    border-radius: 50%; /* Делаем кнопку круглой */
+    width: 40px; /* Ширина кнопки */
+    height: 40px; /* Высота кнопки */
+    display: flex;
+    align-items: center; /* Центрируем крестик по вертикали */
+    justify-content: center; /* Центрируем крестик по горизонтали */
+    font-size: 20px; /* Размер шрифта для крестика */
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    main {
+        padding: 30px 10px; /* Уменьшаем отступы для мобильных */
+    }
+
+    h1 {
+        font-size: 24px; /* Уменьшаем размер заголовка */
+    }
+
+    button {
+        padding: 12px; /* Уменьшаем отступы на кнопках */
+        font-size: 14px; /* Уменьшаем размер шрифта на кнопках */
+    }
+
+    .project-text {
+        width: 90vw; /* Ширина блока проекта немного увеличена */
+        padding: 20px; /* Уменьшаем внутренние отступы */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px; /* Еще больше уменьшаем размер заголовка для маленьких экранов */
+    }
+
+    button {
+        padding: 10px; /* Еще больше уменьшаем отступы на кнопках */
+        font-size: 12px; /* Еще больше уменьшаем размер шрифта на кнопках */
+    }
+}
