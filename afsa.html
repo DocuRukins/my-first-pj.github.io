@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моё Портфолио</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
+</head>
+<body>
+
+    <!-- Заголовок -->
+    <header>
+        <h1>Привет! Меня зовут Руслан (можете звать меня Руслан братан)</h1>
+        <p>Я начинающий веб-разработчик</p>
+    </header>
+
+    <!-- Основная часть с кнопками проектов -->
+    <main>
+        <div class="buttons">
+            <button id="project1Button">Проект 1</button>
+            <button id="project2Button">Проект 2</button>
+        </div>
+    </main>
+
+    <!-- Тексты проектов -->
+    <div class="project-text" id="project1Text">
+        <button class="close-btn">✖</button> <!-- Крестик в кнопке закрытия -->
+        <h3>Проект 1: Вред курения</h3>
+        <p>Описание проекта: В данном проекте я рассказал про вред курения, заболевания, зависимости и другие факты, связанные с курением.</p>
+    </div>
+
+    <div class="project-text" id="project2Text">
+        <button class="close-btn">✖</button> <!-- Крестик в кнопке закрытия -->
+        <h3>Проект 2: Портфолио</h3>
+        <p>Описание проекта: Это не совсем проект, но в данном проекте я буду публиковать все свои новые работы.</p>
+    </div>
+
+    <script>
+        // Получаем кнопки и блоки с текстом проектов
+        const project1Button = document.getElementById('project1Button');
+        const project2Button = document.getElementById('project2Button');
+        const project1Text = document.getElementById('project1Text');
+        const project2Text = document.getElementById('project2Text');
+        const closeButtons = document.querySelectorAll('.close-btn');
+
+        // Функция для показа текста проекта с анимацией
+        function showProjectText(projectText) {
+            // Скрываем все другие тексты перед показом нового
+            project1Text.classList.remove('visible');
+            project2Text.classList.remove('visible');
+
+            // Показываем текст выбранного проекта
+            projectText.classList.add('visible');
+        }
+
+        // Обработчики для показа текста проекта
+        project1Button.addEventListener('click', function() {
+            showProjectText(project1Text);
+        });
+
+        project2Button.addEventListener('click', function() {
+            showProjectText(project2Text);
+        });
+
+        // Добавляем обработчики для закрытия текста проекта
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                project1Text.classList.remove('visible');
+                project2Text.classList.remove('visible');
+            });
+        });
+    </script>
+
+</body>
+</html>
