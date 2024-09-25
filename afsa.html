@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моё Портфолио</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://img1.akspic.ru/crops/1/7/1/6/6/166171/166171-macos_12_monterey_blue_modd_official_stock_wallpaper_6k_resolution_light-3840x2160.jpg') no-repeat center center fixed; /* Замените на вашу ссылку */
+            background-size: cover;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Заголовок и приветствие без фона */
+        header {
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1, p {
+            margin: 0;
+        }
+
+        /* Основная часть без фона */
+        main {
+            width: 100%;
+            padding: 50px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Стили для кнопок */
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #008080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 100%; /* Кнопки занимают всю ширину на мобильных устройствах */
+        }
+
+        button:hover {
+            background-color: #006666;
+        }
+
+        /* Блок текста проекта ниже приветствия */
+        .project-text {
+            position: absolute;
+            top: 200px; /* Появление ниже заголовка */
+            left: 100%;
+            width: 80vw;
+            background-color: rgba(255, 255, 255, 0.9); /* Прозрачный белый фон */
+            padding: 40px;
+            box-sizing: border-box;
+            transition: left 0.5s ease-in-out;
+            z-index: 1;
+            border-radius: 10px; /* Скругление углов блока проекта */
+        }
+
+        .project-text.visible {
+            left: 10vw; /* Текст будет слева с отступом */
+        }
+
+        .project-text h3 {
+            margin: 0 0 20px;
+        }
+
+        /* Кнопка закрытия */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: #f00;
+            color: white;
+            border: none;
+            padding: 10px; /* Убираем лишние отступы */
+            cursor: pointer;
+            border-radius: 50%; /* Делаем кнопку круглой */
+            width: 40px; /* Ширина кнопки */
+            height: 40px; /* Высота кнопки */
+            display: flex;
+            align-items: center; /* Центрируем крестик по вертикали */
+            justify-content: center; /* Центрируем крестик по горизонтали */
+            font-size: 20px; /* Размер шрифта для крестика */
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media (max-width: 768px) {
+            main {
+                padding: 30px 10px; /* Уменьшаем отступы для мобильных */
+            }
+
+            h1 {
+                font-size: 24px; /* Уменьшаем размер заголовка */
+            }
+
+            button {
+                padding: 12px; /* Уменьшаем отступы на кнопках */
+                font-size: 14px; /* Уменьшаем размер шрифта на кнопках */
+            }
+
+            .project-text {
+                width: 90vw; /* Ширина блока проекта немного увеличена */
+                padding: 20px; /* Уменьшаем внутренние отступы */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px; /* Еще больше уменьшаем размер заголовка для маленьких экранов */
+            }
+
+            button {
+                padding: 10px; /* Еще больше уменьшаем отступы на кнопках */
+                font-size: 12px; /* Еще больше уменьшаем размер шрифта на кнопках */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Заголовок -->
+    <header>
+        <h1>Привет! Меня зовут Руслан (можете звать меня Руслан братан)</h1>
+        <p>Я начинающий веб-разработчик</p>
+    </header>
+
+    <!-- Основная часть с кнопками проектов -->
+    <main>
+        <div class="buttons">
+            <button id="project1Button">Проект 1</button>
+            <button id="project2Button">Проект 2</button>
+        </div>
+    </main>
+
+    <!-- Тексты проектов -->
+    <div class="project-text" id="project1Text">
+        <button class="close-btn">✖</button> <!-- Крестик в кнопке закрытия -->
+        <h3>Проект 1: Вред курения</h3>
+        <p>Описание проекта: В данном проекте я рассказал про вред курения, заболевания, зависимости и другие факты, связанные с курением.</p>
+    </div>
+
+    <div class="project-text" id="project2Text">
+        <button class="close-btn">✖</button> <!-- Крестик в кнопке закрытия -->
+        <h3>Проект 2: Портфолио</h3>
+        <p>Описание проекта: Это не совсем проект, но в данном проекте я буду публиковать все свои новые работы.</p>
+    </div>
+
+    <script>
+        // Получаем кнопки и блоки с текстом проектов
+        const project1Button = document.getElementById('project1Button');
+        const project2Button = document.getElementById('project2Button');
+        const project1Text = document.getElementById('project1Text');
+        const project2Text = document.getElementById('project2Text');
+        const closeButtons = document.querySelectorAll('.close-btn');
+
+        // Функция для показа текста проекта с анимацией
+        function showProjectText(projectText) {
+            // Скрываем все другие тексты перед показом нового
+            project1Text.classList.remove('visible');
+            project2Text.classList.remove('visible');
+
+            // Показываем текст выбранного проекта
+            projectText.classList.add('visible');
+        }
+
+        // Обработчики для показа текста проекта
+        project1Button.addEventListener('click', function() {
+            showProjectText(project1Text);
+        });
+
+        project2Button.addEventListener('click', function() {
+            showProjectText(project2Text);
+        });
+
+        // Добавляем обработчики для закрытия текста проекта
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                project1Text.classList.remove('visible');
+                project2Text.classList.remove('visible');
+            });
+        });
+    </script>
+
+</body>
+</html>
